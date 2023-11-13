@@ -1,0 +1,96 @@
+nav{
+    background: white;
+    color: rgb(2, 2, 45);
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    height: 8rem;
+    /* border: 2px solid rebeccapurple; */
+    width: 90vw;
+    margin: auto;
+    font-size: 1.3rem;
+    border-bottom: 2px solid gray;
+}
+.logo{
+    width: 5rem;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    color: white;
+}
+.night{
+   width: 2rem;
+   object-fit: cover;
+   cursor: pointer;
+}
+.loginContainer{
+    display: flex;
+    gap: 3rem;
+}
+.sectionLinksContainer{
+    display: flex;
+    gap: 1.7rem;
+   cursor: pointer;
+}
+.sectionLinksContainer a:hover{
+    color: red;
+    transition: all 0.5s
+}
+
+.logInBtn{
+    padding: 4px 20px;
+    border: 1px  solid black;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.logInBtn:hover{
+    background: rgb(4, 246, 97);
+    transition: all .5s;
+}
+
+button{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    background: white;
+}
+
+.menu{
+    display: none;
+}
+
+@media screen  and (max-width:850px){
+    nav{
+        font-size: 1.1rem;
+    }
+    .sectionLinksContainer,.loginContainer{
+        gap:1rem;
+    }
+    .logo{
+        width: 3rem;
+    }
+}
+@media screen  and (max-width:630px){
+    nav{
+        font-size: 0.9rem;
+    }
+    .sectionLinksContainer,.loginContainer{
+        gap:0.8rem;
+    }
+}
+@media screen  and (max-width:510px){
+    nav{
+        font-size: 0.9rem;
+    }
+    .sectionLinksContainer{
+        display: none;
+    }
+    .loginContainer{
+        gap:0.8rem;
+    }
+    .menu{
+        display: block;
+    }
+}

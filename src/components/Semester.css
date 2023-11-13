@@ -1,0 +1,21 @@
+.cardsContainer{
+    /* border: 2px solid rebeccapurple; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 70%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.subHeading{
+    font-size: 1.5rem;
+    margin: 10px;
+}
+.main{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}

@@ -1,0 +1,38 @@
+.card{
+    /* border: 2px solid red; */
+    width: 25%;
+    /* height: 30vh; */
+    background-color: #f5f6fa;
+    box-shadow: rgb(174, 149, 149) 0 0 4px 2px;
+    padding: 1.2rem;
+    border-radius: 10px;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: uppercase;
+    min-width: 15rem;
+}
+h3{
+    font-size: 1.9rem;
+}
+.subjectBox{
+    margin: 1.1rem;
+}
+
+.marksBox{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.2rem;
+    font-size: 1.3rem;
+    /* font-weight: 900; */
+}
+.box{
+    background-color: #f5f6fa;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+@media screen and (max-width:) {
+    
+}
