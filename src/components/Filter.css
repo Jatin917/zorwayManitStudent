@@ -1,6 +1,24 @@
 .active{
-    border: 2px solid white;
+    border: 2px solid black;
     /* border-solid border-white border-2 p-2 rounded */
     padding: 4px;
     border-radius: 4px;
+}
+
+.filterContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    /* border: 2px solid black; */
+    margin: auto;
+    padding: 20px;
+}
+
+.filterContainer button{
+    width: 6rem;
+    border-radius: 5px;
+    padding: 5px 8px;
 }

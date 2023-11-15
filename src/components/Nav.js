@@ -26,7 +26,7 @@ function Nav(props){
             <div className='loginContainer'>
                 <div className='logInBtn' onClick={signout
 }>
-                    {signed}
+                    {!signed ? "Log In" : "Sign Out"}
                 </div>
                 <button onClick={()=>{
                     setNightmode(!nightmode);

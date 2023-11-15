@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './Filter.css'
 
 function Filter(props){
@@ -7,18 +8,12 @@ function Filter(props){
     const logIn = document.getElementById('logIn');
 
     return(
-        <div className="flex item-center justify-around p-3 mt-16 rounded w-3/5">
-            <button id='signIn' className='border-solid  border-2 border-red'  onClick={()=>{
+        <div className={`filterContainer bg-slate-50 `}>
+            <button id='signIn' className= {` ${newUser ? 'active' : ''}`}  onClick={()=>{
                 setnewUser(true);
-                console.log("sign in");
-                // signIn.classList.add('active');
-                // logIn.classList.remove('active');
-            }}>Sign Up</button>
-            <button id='logIn' className='' onClick={()=>{
+            }}>Sign Up </button>
+            <button id='logIn' className={` ${!newUser ? 'active' : ''}`} onClick={()=>{
                 setnewUser(false);
-                console.log("log in");
-                // logIn.classList.add('active');
-                // signIn.classList.remove('active');
             }}>Log In</button>
         </div>
     )

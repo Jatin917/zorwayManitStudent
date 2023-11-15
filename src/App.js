@@ -1,11 +1,12 @@
 import './App.css';
 import Dashboard from './components/Dashboard';
+import Form from './components/From';
+import { useEffect } from 'react';
+import MyComponent from './components/Mycomponent';
+// import { auth } from './firebase'; // Import your Firebase authentication instance
 
 import React, { useState } from "react";
-import SignUp from './components/SignUp';
-import SignIn from './components/SignIn';
-import Filter from './components/Filter';
-import { getAuth,createUserWithEmailAndPassword,onAuthStateChanged,signOut} from "firebase/auth";
+import { getAuth,onAuthStateChanged,signOut} from "firebase/auth";
 import { firebase } from 'firebase/app';
 import { app } from "./firebase";
 import { ToastContainer } from "react-toastify";
@@ -21,7 +22,6 @@ const auth = getAuth(app);
 
 function App() {
 
-  const [newUser,setnewUser] = useState(true);
   const [logged, setLogged] = useState(false);
   const [signed,setsigned] = useState("Log In");
   // console.log(logged);
@@ -31,43 +31,33 @@ function App() {
     signOut(auth).then(() => {
         toast.success("Sign Out Successfully");
         console.log("sign out successfully");
-        setLogged(!logged)
+        // setLogged(logged)
         // Sign-out successful.
     }).catch((error) => {
         // An error happened.
-        console.log("problem in signing you out successfully");
         toast.error(`Somethign went wrong ${error}`);
       });
   }
 
-  onAuthStateChanged(auth,(user) => {
-    if (user) {
-      // User is signed in.
-          console.log("Sign-in provider: " + user.providerData.providerId);
-          console.log("  Provider-specific UID: " + user.providerData.uid);
-          console.log("  Name: " + user.providerData.displayName);
-          console.log("  Email: " + user.providerData.email);
-          console.log("  Photo URL: " + user.providerData.photoURL);
-          setsigned("Sign Out");
-          // setLogged(!logged)
-      // Show user-specific content or navigation options.
-    } else {
-      // No user is signed in.
-      // document.getElementById('login-status').textContent = 'Not logged in';
-      setsigned("Log In");
-      // setLogged(!logged)
-      // Show login options or general content.
-    }
-  });
+  // onAuthStateChanged(auth,(user) => {
+  //   if (user) {
+  //     // User is signed in.
+  //         setsigned("Sign Out");
+  //         setLogged(!logged)
+  //     // Show user-specific content or navigation options.
+  //   } else {
+  //     // No user is signed in.
+  //     setsigned("Log In");
+  //     // setLogged(!logged)
+  //     // Show login options or general content.
+  //   }
+  // });
 
   return (
     <div className="App">
-      {/* <Filter newUser={newUser} setnewUser={setnewUser} /> */}
-        {logged ?
-        (<Dashboard signout= {signout} signed={signed} setsigned={setsigned} />) : 
-        (newUser ? <SignUp newUser={newUser} setnewUser={setnewUser} logged = {logged} setLogged = {setLogged} signout={signout} /> : <SignIn newUser={newUser} setnewUser={setnewUser} logged = {logged} setLogged = {setLogged} signout={signout}/>)
-      }
+      <MyComponent signed={signed} signout = {signout} setsigned={setsigned} logged={logged} setLogged={setLogged}  />
       <ToastContainer/>
+      {console.log(logged)}
     </div>
   );
 }

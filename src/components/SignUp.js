@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getAuth,createUserWithEmailAndPassword,onAuthStateChanged} from "firebase/auth";
+import { getAuth,createUserWithEmailAndPassword} from "firebase/auth";
 import { firebase } from 'firebase/app';
 import { app } from "../firebase";
 
@@ -13,22 +13,18 @@ const auth = getAuth(app);
 function Sign(props){
         const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
-    const [displayName,setDisplayName] = useState("");
     const [error, setError] = useState('');
-    const signout = props.signout;
+
     const logged = props.logged;
     const setLogged = props.setLogged;
-    const newUser = props.newUser;
-    const setnewUser = props.setnewUser;
-    const onAuthStateChanged = props.onAuthStateChanged;
     // const user = auth.user;
     
     function signUpUser(){
-        createUserWithEmailAndPassword(auth,email,password,displayName).
+        createUserWithEmailAndPassword(auth,email,password).
         then((user)=>{
             toast.success(`Created account with ${user.user.email}`)
-            setLogged(!logged);
-            setnewUser(false);
+            // setLogged(!logged);
+            // setnewUser(false);
             })
         .catch((err)=>{
             setError(err.message);
@@ -39,29 +35,26 @@ function Sign(props){
     return (
         <div className="signUp">
             <div className="my-4">
-                <h1 className="text-2xl text-rose-900">Create An Account Here</h1>
+                <h1 className="text-2xl text-rose-900 uppercase">Create An Account Here</h1>
             </div>
 
-            <div className="boxSignUp">
+            <div className="boxSignUp uppercase">
                 <lable>email</lable>
-                <input autocomplete="off" required className="rounded text-black" value={email} type="email" name="email" onChange={(event)=>
+                <input autocomplete="off" required className="border-solid border-2 border-black" value={email} type="email" name="email" onChange={(event)=>
                     setEmail(event.target.value)
                 }/>
             </div>
 
-            <div className="boxSignUp">
+            <div className="boxSignUp uppercase">
                 <lable>password</lable>
-                <input autocomplete="off" required className="rounded text-black" value={password} id="pass" type="password" name="password" onChange={(event)=>
+                <input autocomplete="off" required className="border-solid border-2 border-black" value={password} id="pass" type="password" name="password" onChange={(event)=>
                     setPassword(event.target.value)
                 }/>
             </div>
-            <button className="bg-stone-800 px-3 py-1 rounded uppercase m-6 singUpbtn" onClick={()=>{
-                    console.log('chal rha hian');
+            <button className="bg-stone-800 px-3 py-1 rounded uppercase m-6 singUpbtn text-white" onClick={()=>{
                     signUpUser();
                     // sendVerificationEmail();
                     }}>create user</button>
-
-            <button className="bg-slate-700 singUpbtn" onClick={signout}>Sign Out</button>
                     <ToastContainer/>
         </div>
     )

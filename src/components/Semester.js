@@ -1,7 +1,7 @@
 import Heading  from "./Heading";
 import './Semester.css'
 import Card from './Card'
-import  data  from '../data'
+import  {data}  from '../data'
 import { useState } from "react";
 function Semester(){
     const heading = "Marksheet"

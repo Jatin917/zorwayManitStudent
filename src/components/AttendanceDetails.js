@@ -1,33 +1,54 @@
 import "./AttendanceDetails.css";
+import { attendance } from "../data";
 import Heading from "./Heading";
-import data from "../data";
+import { useEffect, useState } from "react";
 function AttendanceDetails() {
   var nameP = document.querySelector("#name");
   var myinput = document.querySelectorAll(".myinput");
   var rangeV = document.querySelectorAll(".rangeV");
   var range = document.querySelector("#range");
   var words = document.querySelector("#words");
-  var subject = document.querySelectorAll(".subject");
-  let i = 0;
+  const [subjectsAttendance,setSubjectsAttendance] = useState(attendance["students"][2]["attendance"])
   const subjects = [
     "Maths",
     "DCD",
     "PPL",
     "DSA",
     "DBMS",
-    "Professional Practice",
+    "PP",
   ];
-  function getSubject(index) {
-    return subjects[index];
+
+  
+
+  useEffect(() => {
+    var myinput = document.querySelectorAll('.myinput');
+    var rangeV = document.querySelectorAll('.rangeV');
+    var subject = document.querySelectorAll(".subject");
+    displaySub(subject);
+    displayAttend(rangeV,Object.values(subjectsAttendance));
+    rangeColor(myinput, rangeV);
+  }, [subjectsAttendance]);
+
+  function displaySub(subject){
+    let i = 0;
+    function getSubject(index) {
+      return subjects[index];
+    }
+    subject.forEach((sub) => {
+      sub.textContent = getSubject(i++);
+    });
   }
-  subject.forEach((sub) => {
-    sub.textContent = getSubject(i++);
-  });
-  function rangeColor() {
+
+  function displayAttend(rangeV, subjectsAttendance) {
+    rangeV.forEach((atten, index) => {
+      atten.textContent = subjectsAttendance[index++];
+    });
+  }
+
+  function rangeColor(myinput,rangeV) {
     var value;
     let i = 0;
     myinput.forEach((element) => {
-      // console.log(element.value);
       value = element.value;
       element.style.background = `linear-gradient(to right,  rgb(13, 13, 37) 0%,  rgb(13, 13, 37) ${value}%, #fff ${value}%, #fff 100%)`;
       while (i < rangeV.length) {
@@ -38,7 +59,6 @@ function AttendanceDetails() {
       }
     });
   }
-  rangeColor();
   const heading = "Attendance Details"
   return (
     <div className="container">
